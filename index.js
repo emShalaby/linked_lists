@@ -12,7 +12,26 @@ class linkedList {
     }
     return curretNode;
   }
-
+  get size() {
+    let curretNode = this.head;
+    while (curretNode.next) {
+      curretNode = curretNode.next;
+    }
+    return curretNode.index + 1;
+  }
+  prepend(value) {
+    let prevHead = this.head;
+    this.head = null;
+    let newNode = new node(value);
+    newNode.next = prevHead;
+    this.head = newNode;
+    this.head.index = 0;
+    let nextNode = this.head.next;
+    while (nextNode) {
+      nextNode.index++;
+      nextNode = nextNode.next;
+    }
+  }
   append(value) {
     if (this.head == null) {
       this.head = new node(value);
@@ -36,3 +55,7 @@ class node {
     this.next = null;
   }
 }
+
+let arr = new linkedList();
+arr.append(2);
+arr.append(3);
