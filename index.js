@@ -5,15 +5,35 @@ class linkedList {
     this.head = null;
   }
 
-  get tail() {
+  tail() {
+    if (this.head) {
+      return (function test(someNode) {
+        if (!someNode.next) return { someNode };
+        else test(someNode.next);
+      })(this.head);
+    }
+  }
+  contains(value) {
     let currentNode = this.head;
     while (currentNode.next) {
+      if (currentNode.value == value) return true;
+
       currentNode = currentNode.next;
     }
-    return currentNode;
+    return false;
+  }
+  find(value) {
+    let currentNode = this.head;
+    while (currentNode.next) {
+      if (currentNode.value == value) return currentNode.index;
+
+      currentNode = currentNode.next;
+    }
+    return null;
   }
 
-  get size() {
+
+  size() {
     let curretNode = this.head;
     while (curretNode.next) {
       curretNode = curretNode.next;
@@ -54,16 +74,6 @@ class linkedList {
     let currentNode = this.head;
     while (currentNode) {
       if (currentNode.index == index) return currentNode;
-      currentNode = currentNode.next;
-    }
-  }
-  pop() {
-    let currentNode = this.head;
-    while (currentNode) {
-      if (!currentNode.next) {
-        currentNode = null;
-        return currentNode;
-      }
       currentNode = currentNode.next;
     }
   }
