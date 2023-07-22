@@ -5,8 +5,12 @@ class linkedList {
     this.head = null;
   }
 
-  head() {
-    return this.head;
+  get tail() {
+    let curretNode = this.head;
+    while (curretNode.next) {
+      curretNode = curretNode.next;
+    }
+    return curretNode;
   }
 
   append(value) {
@@ -16,13 +20,13 @@ class linkedList {
     } else {
       let newNode = new node(value);
       let currentNode = this.head;
-      let index = 0;
+      let index = 1;
       while (currentNode.next) {
         currentNode = currentNode.next;
         index++;
       }
+      newNode.index = index;
       currentNode.next = newNode;
-      currentNode.index = index;
     }
   }
 }
