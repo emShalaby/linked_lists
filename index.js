@@ -6,12 +6,13 @@ class linkedList {
   }
 
   get tail() {
-    let curretNode = this.head;
-    while (curretNode.next) {
-      curretNode = curretNode.next;
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
     }
-    return curretNode;
+    return currentNode;
   }
+
   get size() {
     let curretNode = this.head;
     while (curretNode.next) {
@@ -46,6 +47,24 @@ class linkedList {
       }
       newNode.index = index;
       currentNode.next = newNode;
+    }
+  }
+
+  at(index) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.index == index) return currentNode;
+      currentNode = currentNode.next;
+    }
+  }
+  pop() {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (!currentNode.next) {
+        currentNode = null;
+        return currentNode;
+      }
+      currentNode = currentNode.next;
     }
   }
 }
