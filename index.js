@@ -9,7 +9,7 @@ class linkedList {
     if (this.head) {
       return (function test(someNode) {
         if (!someNode.next) return someNode;
-        else test(someNode.next);
+        else return test(someNode.next);
       })(this.head);
     }
   }
@@ -69,7 +69,16 @@ class linkedList {
       currentNode.next = newNode;
     }
   }
-
+  pop() {
+    if (this.head.next == null) this.head = null;
+    else if (this.head) {
+      (function test(someNode) {
+        if (!someNode.next.next) {
+          someNode.next = null;
+        } else test(someNode.next);
+      })(this.head);
+    }
+  }
   at(index) {
     let currentNode = this.head;
     while (currentNode) {
