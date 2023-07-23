@@ -8,11 +8,12 @@ class linkedList {
   tail() {
     if (this.head) {
       return (function test(someNode) {
-        if (!someNode.next) return { someNode };
+        if (!someNode.next) return someNode;
         else test(someNode.next);
       })(this.head);
     }
   }
+
   contains(value) {
     let currentNode = this.head;
     while (currentNode.next) {
@@ -31,7 +32,6 @@ class linkedList {
     }
     return null;
   }
-
 
   size() {
     let curretNode = this.head;
